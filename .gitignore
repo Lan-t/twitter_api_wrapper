@@ -2,5 +2,5 @@
 __pycache__
 venv
 
-api_keys.py
-
+accesslog.log
+errorlog.log
