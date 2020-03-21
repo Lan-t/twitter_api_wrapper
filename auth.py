@@ -6,29 +6,15 @@ from uuid import uuid4
 from responder import API, Request, Response
 from requests_oauthlib import OAuth1Session
 
-from api_keys import API_KEY, API_SECRET_KEY
+from api_keys import API_KEY, API_SECRET_KEY, BASE_URL, TO_PATH
 
 api_url_base: Final = ''
 
 request_token_url: Final = 'https://api.twitter.com/oauth/request_token'
 authenticate_url: Final = 'https://api.twitter.com/oauth/authenticate'
 access_token_url: Final = 'https://api.twitter.com/oauth/access_token'
-callback_url: Final = 'http://localhost:8080/oauth_callback/'
-after_redirect_url: Final = '/app'
-
-
-class Auth:
-    def on_request(self, req: Request, res: Response):
-        try:
-            req.session['oauth_token']
-            req.session['oauth_token_secret']
-            req.session['user_id']
-            req.session['screen_name']
-        except KeyError:
-            res.status_code = 401
-
-    def session(self, req: Request) -> OAuth1Session:
-        return OAuth1Session(API_KEY, API_SECRET_KEY, req.session['oauth_token'], req.session['oauth_token_secret'])
+callback_url: Final = BASE_URL + '/oauth_callback/'
+after_redirect_url: Final = TO_PATH
 
 
 def authenticate(req: Request, res: Response):
