@@ -149,10 +149,18 @@ from responder import API, Request, Response
 from requests_oauthlib import OAuth1Session
 
 from auth import authenticate, oauth_callback
+from api_keys import DEBUG
 from views import *
 
 
-api = API()
+if DEBUG:
+    api = API(cors=True, cors_params={
+        'allow_origins': ['http://localhost', 'http://localhost:8000'],
+        'allow_methods': ['GET', 'POST'],
+        'allow_headers': ['*'],
+    })
+else:
+    api = API()
 
 api.add_route('/authenticate', authenticate)
 api.add_route('/oauth_callback/', oauth_callback)

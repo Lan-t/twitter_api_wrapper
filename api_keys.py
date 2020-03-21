@@ -6,3 +6,4 @@ ORIGIN = os.environ.get('API_ORIGIN')
 BASE_PATH = os.environ.get('API_BASE_PATH')
 BASE_URL = 'http://' + ORIGIN + (BASE_PATH or '')
 TO_PATH = os.environ.get('API_TO_PATH') or '/entry'
+DEBUG = os.environ.get('DEBUG') == 'true'
