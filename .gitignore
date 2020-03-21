@@ -4,3 +4,4 @@ venv
 
 accesslog.log
 errorlog.log
+.env.xsh

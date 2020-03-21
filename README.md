@@ -5,15 +5,16 @@
 
 ## セットアップ
 
-api_keys.py
-
-``` python
-API_KEY = ''
-API_SECRET_KEY = ''
-```
+api_keys.pyみて環境変数設定
 
 ``` bash
 $ pip install -r requirements.txt
+```
+
+使うAPIリストをmake.pyに記述
+
+``` bash
+$ python make.py
 ```
 
 1. `/authenticate`にアクセス
